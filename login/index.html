@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KR CONNECT - Smart College ERP</title>
+
+    <meta name="description" content="KR CONNECT is a smart college ERP for M.Kumarasamy College of Engineering.">
+    <meta name="author" content="Technology Innovation Hub - MKCE">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="images/mkce_s.png">
+    <link href="css/bootstrap.min_1.css" rel="stylesheet">
+    <link href="css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/alertify.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Main Wrapper */
+        .main-wrapper {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background: #000;
+        }
+
+        /* Split Container */
+        .split-container {
+            display: flex;
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* LEFT SIDE - DRAMATIC BLUE GRADIENT */
+        .left-side {
+            flex: 0 0 52%;
+            background: linear-gradient(135deg, #0a1628 0%, #1a3a6b 25%, #2563eb 50%, #1fb5ac 75%, #14b8a6 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 2.5rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Animated mesh gradient background */
+        .left-side::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            top: -25%;
+            left: -25%;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(20, 184, 166, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.2) 0%, transparent 50%);
+            animation: meshMove 20s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes meshMove {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            33% {
+                transform: translate(5%, 5%) rotate(120deg);
+            }
+
+            66% {
+                transform: translate(-5%, 5%) rotate(240deg);
+            }
+        }
+
+        /* Glowing orbs */
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: orbFloat 15s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        .glow-orb-1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.4), transparent);
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .glow-orb-2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(20, 184, 166, 0.4), transparent);
+            bottom: -50px;
+            right: -50px;
+            animation-delay: 5s;
+        }
+
+        .glow-orb-3 {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.3), transparent);
+            top: 50%;
+            left: 30%;
+            animation-delay: 10s;
+        }
+
+        @keyframes orbFloat {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(30px, -30px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-30px, 30px) scale(0.9);
+            }
+        }
+
+        /* Particles */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+
+        /* DRAMATIC WAVE DIVIDER */
+        .wave-divider {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 150px;
+            z-index: 20;
+            transform: translateX(75px);
+            filter: drop-shadow(-10px 0 30px rgba(0, 0, 0, 0.3));
+        }
+
+        .wave-divider svg {
+            height: 100%;
+            width: 100%;
+            display: block;
+        }
+
+        /* Content */
+        .content-wrapper {
+            position: relative;
+            z-index: 10;
+        }
+
+        .college-logo-img {
+            max-width: 300px;
+            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 25px;
+            margin: 2rem auto;
+            /* This centers it */
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.2),
+                inset 0 1px 2px rgba(255, 255, 255, 0.8);
+            animation: logoFloat 4s ease-in-out infinite;
+            transform-style: preserve-3d;
+            display: block;
+            /* Required for margin auto */
+        }
+
+        @keyframes logoFloat {
+
+            0%,
+            100% {
+                transform: translateY(0) rotateX(0deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotateX(5deg);
+            }
+        }
+
+        .welcome-text {
+            color: white;
+            margin-bottom: 2rem;
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .welcome-text h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #ffffff 0%, #60efff 50%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 60px rgba(96, 239, 255, 0.5);
+            animation: textGlow 3s ease-in-out infinite;
+            text-align: center;
+        }
+
+        @keyframes textGlow {
+
+            0%,
+            100% {
+                filter: drop-shadow(0 0 20px rgba(96, 239, 255, 0.6));
+            }
+
+            50% {
+                filter: drop-shadow(0 0 40px rgba(96, 239, 255, 0.9));
+            }
+        }
+
+        .welcome-text p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            line-height: 1.6;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* PREMIUM FEATURE CARDS - 2 CARDS PER ROW WITH SMALLER SIZE */
+        .features-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.7rem;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 14px;
+            padding: 0.8rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            opacity: 0;
+            animation: slideInLeft 0.8s ease-out forwards;
+            position: relative;
+            overflow: hidden;
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .feature-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s;
+        }
+
+        .feature-item:hover::before {
+            left: 100%;
+        }
+
+        .feature-item:hover {
+            transform: translateX(8px) translateY(-3px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(96, 239, 255, 0.5);
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.4),
+                0 0 40px rgba(96, 239, 255, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        .feature-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .feature-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .feature-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .feature-item:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .feature-item:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .feature-item:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .feature-icon-wrapper {
+            min-width: 42px;
+            width: 42px;
+            height: 72px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(20, 184, 166, 0.4));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow:
+                0 8px 24px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        .feature-icon-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(135deg, rgba(96, 239, 255, 0.6), rgba(20, 184, 166, 0.6));
+            border-radius: 14px;
+            opacity: 0;
+            transition: opacity 0.4s;
+            z-index: -1;
+        }
+
+        .feature-item:hover .feature-icon-wrapper {
+            transform: rotate(360deg) scale(1.15);
+        }
+
+        .feature-item:hover .feature-icon-wrapper::before {
+            opacity: 1;
+        }
+
+        .feature-icon-wrapper i {
+            font-size: 1.2rem;
+            color: white;
+            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+        }
+
+        .feature-text h4 {
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 0.15rem;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-text p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.75rem;
+            margin: 0;
+            line-height: 1.3;
+            font-weight: 400;
+        }
+
+        /* RIGHT SIDE - CLEAN WHITE WITH COLORFUL BUBBLES */
+        .right-side {
+            flex: 0 0 48%;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 2rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Colorful floating bubbles */
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.45;
+            animation: bubbleFloat 20s ease-in-out infinite;
+            backdrop-filter: blur(2px);
+        }
+
+        .bubble-1 {
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.4), rgba(96, 165, 250, 0.2));
+            top: 10%;
+            right: 5%;
+            animation-delay: 0s;
+        }
+
+        .bubble-2 {
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(20, 184, 166, 0.4), rgba(45, 212, 191, 0.2));
+            bottom: 15%;
+            left: 8%;
+            animation-delay: 3s;
+        }
+
+        .bubble-3 {
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.4), rgba(167, 139, 250, 0.2));
+            top: 40%;
+            right: 15%;
+            animation-delay: 6s;
+        }
+
+        .bubble-4 {
+            width: 130px;
+            height: 130px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.4), rgba(244, 114, 182, 0.2));
+            top: 20%;
+            left: 12%;
+            animation-delay: 9s;
+        }
+
+        .bubble-5 {
+            width: 170px;
+            height: 170px;
+            background: radial-gradient(circle, rgba(251, 146, 60, 0.4), rgba(251, 191, 36, 0.2));
+            bottom: 25%;
+            right: 20%;
+            animation-delay: 12s;
+        }
+
+        .bubble-6 {
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.4), rgba(56, 189, 248, 0.2));
+            top: 60%;
+            left: 15%;
+            animation-delay: 15s;
+        }
+
+        @keyframes bubbleFloat {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            25% {
+                transform: translate(30px, -40px) scale(1.1);
+            }
+
+            50% {
+                transform: translate(-25px, -20px) scale(0.95);
+            }
+
+            75% {
+                transform: translate(35px, 25px) scale(1.05);
+            }
+        }
+
+        /* PREMIUM LOGIN BOX - INCREASED SIZE */
+        .login-box {
+            width: 100%;
+            max-width: 550px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 30px;
+            padding: 2.8rem 3rem 2.3rem;
+            box-shadow:
+                0 40px 100px rgba(0, 0, 0, 0.15),
+                0 0 0 1px rgba(59, 130, 246, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 1);
+            position: relative;
+            z-index: 10;
+            animation: slideInRight 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* CUTE TEDDY BEAR */
+        .teddy-container {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .teddy {
+            width: 110px;
+            height: 110px;
+            position: relative;
+            display: inline-block;
+            animation: teddyFloat 4s ease-in-out infinite;
+            filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.2));
+        }
+
+        @keyframes teddyFloat {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-2deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(2deg);
+            }
+        }
+
+        .teddy-face {
+            width: 75px;
+            height: 75px;
+            background: linear-gradient(145deg, #b8763e, #8B4513);
+            border-radius: 50%;
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, 0.3),
+                inset 0 -4px 10px rgba(0, 0, 0, 0.25),
+                inset 0 2px 4px rgba(255, 255, 255, 0.3);
+        }
+
+        .teddy-ear {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(145deg, #b8763e, #8B4513);
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            box-shadow:
+                0 6px 15px rgba(0, 0, 0, 0.25),
+                inset 0 -2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .teddy-ear::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: #D2B48C;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .teddy-ear.left {
+            left: 6px;
+        }
+
+        .teddy-ear.right {
+            right: 6px;
+        }
+
+        .teddy-eye {
+            width: 13px;
+            height: 13px;
+            background: #000;
+            border-radius: 50%;
+            position: absolute;
+            top: 26px;
+            transition: all 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        .teddy-eye::after {
+            content: '';
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 3px;
+        }
+
+        .teddy-eye.left {
+            left: 19px;
+        }
+
+        .teddy-eye.right {
+            right: 19px;
+        }
+
+        .teddy.eyes-closed .teddy-eye {
+            height: 3px;
+            border-radius: 2px;
+            top: 31px;
+            transform: scaleY(0.2);
+        }
+
+        .teddy.eyes-closed .teddy-eye::after {
+            display: none;
+        }
+
+        .teddy-snout {
+            width: 36px;
+            height: 24px;
+            background: linear-gradient(145deg, #f0d9bf, #D2B48C);
+            border-radius: 50%;
+            position: absolute;
+            bottom: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        .teddy-nose {
+            width: 9px;
+            height: 7px;
+            background: #000;
+            border-radius: 50%;
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .teddy-mouth {
+            width: 20px;
+            height: 11px;
+            border: 2px solid #000;
+            border-top: none;
+            border-radius: 0 0 16px 16px;
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* KR LOGO */
+        .kr-logo-right {
+            max-width: 300px;
+            margin-bottom: 1.5rem;
+            animation: fadeInScale 1s ease-out;
+            filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.12));
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* PREMIUM TABS */
+        .login-tabs .nav-pills {
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+            padding: 6px;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            box-shadow:
+                inset 0 2px 8px rgba(0, 0, 0, 0.08),
+                0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .login-tabs .nav-link {
+            padding: 0.75rem 1.6rem;
+            border-radius: 12px;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            color: #64748b;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-tabs .nav-link::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #3b82f6, #14b8a6);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .login-tabs .nav-link.active {
+            background: linear-gradient(135deg, #2563eb, #14b8a6);
+            color: white;
+            box-shadow:
+                0 6px 20px rgba(37, 99, 235, 0.4),
+                0 0 0 4px rgba(37, 99, 235, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* PREMIUM INPUTS */
+        .input-group {
+            margin-bottom: 1.2rem;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow:
+                0 4px 14px rgba(0, 0, 0, 0.08),
+                0 0 0 1px rgba(203, 213, 225, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .input-group:focus-within {
+            box-shadow:
+                0 6px 24px rgba(37, 99, 235, 0.15),
+                0 0 0 3px rgba(37, 99, 235, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .input-group-text {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            border: none;
+            width: 50px;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .input-group-text.faculty-icon {
+            background: linear-gradient(135deg, #14b8a6, #0d9488);
+        }
+
+        .form-control {
+            height: 48px;
+            border: none;
+            padding-left: 16px;
+            font-size: 0.98rem;
+            font-weight: 500;
+            background: white;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            background: #f9fafb;
+        }
+
+        .form-control::placeholder {
+            color: #94a3b8;
+            font-weight: 400;
+        }
+
+        /* PREMIUM BUTTONS */
+        .btn-login {
+            height: 50px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border-radius: 14px;
+            border: none;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-login::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-login:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .btn-student {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+        }
+
+        .btn-faculty-login {
+            background: linear-gradient(135deg, #14b8a6, #0d9488);
+            color: white;
+        }
+
+        .btn-lost-password {
+            background: linear-gradient(135deg, #2563eb, #14b8a6);
+            color: white;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+
+        /* Password Recovery */
+        .recover-form {
+            display: none;
+        }
+
+        .recover-form.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .recover-title {
+            color: #2563eb;
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 0.6rem;
+        }
+
+        .recover-description {
+            color: #64748b;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: linear-gradient(135deg, #0a1628 0%, #2563eb 100%);
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 0.88rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .split-container {
+                flex-direction: column;
+                overflow-y: auto;
+            }
+
+            .main-wrapper {
+                overflow-y: auto;
+            }
+
+            .left-side {
+                flex: 0 0 auto;
+                min-height: auto;
+                padding: 2.5rem 1.5rem;
+            }
+
+            .right-side {
+                flex: 0 0 auto;
+                min-height: auto;
+                padding: 2rem 1.5rem 3rem;
+            }
+
+            .wave-divider {
+                display: none;
+            }
+
+            .welcome-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .college-logo-img {
+                max-width: 220px;
+            }
+
+            .features-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.7rem;
+            }
+
+            .login-box {
+                margin-bottom: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .left-side {
+                padding: 2rem 1.2rem;
+            }
+
+            .right-side {
+                padding: 1.5rem 1.2rem 2.5rem;
+            }
+
+            .welcome-text h1 {
+                font-size: 1.9rem;
+            }
+
+            .welcome-text p {
+                font-size: 1rem;
+            }
+
+            .college-logo-img {
+                max-width: 200px;
+                margin-bottom: 1.5rem;
+            }
+
+            .feature-item {
+                padding: 0.7rem 0.9rem;
+            }
+
+            .feature-icon-wrapper {
+                min-width: 38px;
+                width: 38px;
+                height: 38px;
+            }
+
+            .feature-icon-wrapper i {
+                font-size: 1.1rem;
+            }
+
+            .feature-text h4 {
+                font-size: 0.85rem;
+            }
+
+            .feature-text p {
+                font-size: 0.72rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            html,
+            body {
+                overflow-y: auto;
+            }
+
+            .main-wrapper {
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .split-container {
+                height: auto;
+            }
+
+            .left-side {
+                padding: 1.8rem 1rem;
+            }
+
+            .right-side {
+                padding: 1.5rem 1rem 2rem;
+            }
+
+            .features-container {
+                grid-template-columns: 1fr;
+                gap: 0.6rem;
+            }
+
+            .login-box {
+                padding: 2rem 1.5rem;
+                max-width: 100%;
+                margin-bottom: 1.5rem;
+            }
+
+            .college-logo-img {
+                max-width: 180px;
+            }
+
+            .welcome-text h1 {
+                font-size: 1.7rem;
+            }
+
+            .kr-logo-right {
+                max-width: 240px;
+            }
+
+            /* MOBILE TEDDY BEAR RESPONSIVE FIXES */
+            .teddy {
+                width: 95px;
+                height: 95px;
+            }
+
+            .teddy-face {
+                width: 68px;
+                height: 68px;
+                top: 16px;
+                left: 14px;
+            }
+
+            .teddy-ear {
+                width: 25px;
+                height: 25px;
+                top: 9px;
+            }
+
+            .teddy-ear::before {
+                width: 14px;
+                height: 14px;
+            }
+
+            .teddy-ear.left {
+                left: 5px;
+            }
+
+            .teddy-ear.right {
+                right: 5px;
+            }
+
+            /* CRITICAL: Mobile Eye Adjustments - FIXED POSITIONING */
+            .teddy-eye {
+                width: 10px !important;
+                height: 10px !important;
+                top: 24px !important;
+            }
+
+            .teddy-eye::after {
+                width: 3px !important;
+                height: 3px !important;
+                top: 2px !important;
+                left: 2px !important;
+            }
+
+            .teddy-eye.left {
+                left: 14px !important;
+            }
+
+            .teddy-eye.right {
+                right: 14px !important;
+            }
+
+            /* CRITICAL: Mobile Eyes Closed State */
+            .teddy.eyes-closed .teddy-eye {
+                height: 8px !important;
+                top: 27px !important;
+                transform: scaleY(0.2);
+            }
+
+            .teddy-snout {
+                width: 32px;
+                height: 22px;
+                bottom: 16px;
+            }
+
+            .teddy-nose {
+                width: 7px;
+                height: 6px;
+                top: 5px;
+            }
+
+            .teddy-mouth {
+                width: 18px;
+                height: 10px;
+                border-width: 2px;
+                bottom: 4px;
+            }
+
+            .input-group {
+                margin-bottom: 1rem;
+            }
+
+            .btn-login {
+                height: 46px;
+                font-size: 0.95rem;
+            }
+
+            .footer {
+                padding: 1.2rem 1rem;
+            }
+
+            .footer p {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Alertify */
+        .alertify .ajs-dialog {
+            border-radius: 20px;
+        }
+
+        .alertify .ajs-header {
+            background: linear-gradient(135deg, #2563eb, #14b8a6);
+            color: white;
+        }
+
+        .alertify .ajs-ok {
+            background: linear-gradient(135deg, #14b8a6, #0d9488);
+            border: none;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="split-container">
+            <!-- LEFT SIDE -->
+            <div class="left-side">
+                <div class="glow-orb glow-orb-1"></div>
+                <div class="glow-orb glow-orb-2"></div>
+                <div class="glow-orb glow-orb-3"></div>
+                <div id="particles-js"></div>
+
+                <!-- DRAMATIC WAVE -->
+
+
+                <div class="content-wrapper">
+                    <img src="images/mkcenew.png" alt="MKCE Logo" class="college-logo-img">
+
+                    <div class="welcome-text">
+                        <h1>Welcome to KR CONNECT</h1>
+                        <p><b>Our Ultimate Smart College ERP Solution for Complete Academic & Administrative
+                                Excellence</b>
+                        </p>
+                    </div>
+
+                    <div class="features-container">
+                        <div class="feature-item">
+                            <div class="feature-icon-wrapper">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Student & Faculty Management</h4>
+                                <p>Complete data management with advanced analytics</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon-wrapper">
+                                <i class="fas fa-clipboard-check"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Smart Attendance Tracking</h4>
+                                <p>Real-time monitoring for students & staff</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon-wrapper">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Marks Entry & Reports</h4>
+                                <p>Efficient exam management with automated reports</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon-wrapper">
+                                <i class="fas fa-user-friends"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Mentor-Mentee System</h4>
+                                <p>Streamlined student guidance program</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon-wrapper">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Academic Information Hub</h4>
+                                <p>Centralized data repository</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon-wrapper">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Complete Administration</h4>
+                                <p>All-in-one college management</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT SIDE -->
+            <div class="right-side">
+                <div class="bubble bubble-1"></div>
+                <div class="bubble bubble-2"></div>
+                <div class="bubble bubble-3"></div>
+                <div class="bubble bubble-4"></div>
+                <div class="bubble bubble-5"></div>
+                <div class="bubble bubble-6"></div>
+
+                <div class="login-box">
+                    <div class="text-center">
+                        <img src="images/erp7.png" alt="KR Connect" class="kr-logo-right">
+                    </div>
+
+                    <!-- <div class="teddy-container">
+                        <div class="teddy" id="teddy">
+                            <div class="teddy-ear left"></div>
+                            <div class="teddy-ear right"></div>
+                            <div class="teddy-face">
+                                <div class="teddy-eye left"></div>
+                                <div class="teddy-eye right"></div>
+                                <div class="teddy-snout">
+                                    <div class="teddy-nose"></div>
+                                    <div class="teddy-mouth"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div class="login-tabs" id="loginTabsContent">
+                        <ul class="nav nav-pills" role="tablist">
+                            <li class="nav-item flex-fill">
+                                <button class="nav-link w-100 active" id="student-tab" data-bs-toggle="pill"
+                                    data-bs-target="#student" type="button">
+                                    <i class="fas fa-user-graduate me-2"></i>Student
+                                </button>
+                            </li>
+                            <li class="nav-item flex-fill">
+                                <button class="nav-link w-100 " id="faculty-tab" data-bs-toggle="pill"
+                                    data-bs-target="#faculty" type="button">
+                                    <i class="fas fa-chalkboard-teacher me-2"></i>Faculty / Management
+                                </button>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="student">
+                                <form id="studentform" method="post">
+                                    <input type="hidden" name="type" value="student">
+
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-id-card"></i>
+                                        </span>
+                                        <input type="text" class="form-control" name="email" placeholder="Student ID"
+                                            required="">
+                                    </div>
+
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-lock"></i>
+                                        </span>
+                                        <input type="password" class="form-control" name="pass" placeholder="Password"
+                                            required="">
+                                    </div>
+
+                                    <button type="submit" class="btn btn-login btn-student w-100">
+                                        <i class="fas fa-sign-in-alt me-2"></i>Login as Student
+                                    </button>
+                                </form>
+                            </div>
+
+                            <div class="tab-pane fade " id="faculty">
+                                <form id="facultyform" action="#" method="post">
+                                    <input type="hidden" name="type" value="faculty">
+
+                                    <div class="input-group">
+                                        <span class="input-group-text faculty-icon">
+                                            <i class="fas fa-id-badge"></i>
+                                        </span>
+                                        <input type="text" class="form-control" name="email" placeholder="Faculty ID"
+                                            required="">
+                                    </div>
+
+                                    <div class="input-group">
+                                        <span class="input-group-text faculty-icon">
+                                            <i class="fas fa-lock"></i>
+                                        </span>
+                                        <input type="password" class="form-control" name="pass" placeholder="Password"
+                                            required="">
+                                    </div>
+
+                                    <div class="input-group" style="display: none;">
+                                        <span class="input-group-text faculty-icon">
+                                            <i class="fas fa-building"></i>
+                                        </span>
+                                        <select class="form-control" name="selected_dept" id="deptDropdown">
+                                            <option value="">Select Department</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="row g-2">
+                                        <div class="col-md-6">
+                                            <button type="submit" class="btn btn-login btn-faculty-login w-100">
+                                                <i class="fas fa-sign-in-alt me-2"></i>Login
+                                            </button>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button type="button" id="to-recover"
+                                                class="btn btn-login btn-lost-password w-100">
+                                                <i class="fas fa-key me-2"></i>Lost Password
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recover-form" id="recoverForm">
+                        <h3 class="recover-title">
+                            <i class="fas fa-unlock-alt me-2"></i>Password Recovery
+                        </h3>
+                        <p class="recover-description">
+                            Enter your Faculty ID and email address
+                        </p>
+
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-id-badge"></i>
+                            </span>
+                            <input type="text" class="form-control" id="fid" placeholder="Faculty ID">
+                        </div>
+
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <input type="email" class="form-control" id="email" placeholder="Email Address">
+                        </div>
+
+                        <div class="row g-2">
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-login btn-student w-100" id="to-login">
+                                    <i class="fas fa-arrow-left me-2"></i>Back
+                                </button>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-login btn-faculty-login w-100"
+                                    id="sendEmailButton">
+                                    <i class="fas fa-paper-plane me-2"></i>Recover
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>
+                <i class="fas fa-copyright me-2"></i>
+                2025 Designed by Technology Innovation Hub - MKCE. All rights reserved.
+            </p>
+        </footer>
+    </div>
+
+    <!--login script removed (moved to document.ready below) -->
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="js/alertify.min.js" type="text/javascript"></script>
+    <script src="js/particles.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        alertify.defaults.notifier.position = 'top-right';
+        // Particles
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 100, density: { enable: true, value_area: 800 } },
+                color: { value: ['#ffffff', '#60efff', '#14b8a6'] },
+                shape: { type: ['circle', 'triangle'] },
+                opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } },
+                size: { value: 3, random: true, anim: { enable: true, speed: 2 } },
+                line_linked: { enable: true, distance: 150, color: '#ffffff', opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 2, direction: 'none', random: true, out_mode: 'out' }
+            },
+            interactivity: {
+                events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' } },
+                modes: { grab: { distance: 140, line_linked: { opacity: 0.6 } }, push: { particles_nb: 4 } }
+            }
+        });
+
+        $(document).ready(function () {
+            // Student form AJAX submit: ensure this runs after jQuery and alertify are loaded
+            $("#studentform").on("submit", function (e) {
+                e.preventDefault();
+                var form = this;
+                var formdata = new FormData(form);
+                formdata.append("action", "student");
+                $.ajax({
+                    url: "api.php",
+                    type: "POST",
+                    data: formdata,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        try {
+                            let res = (typeof response === 'object') ? response : JSON.parse(response);
+                            if (res.status === 200) {
+                                alertify.success(res.message);
+                                setTimeout(function () { window.location.href = "../student"; }, 2000);
+                            } else {
+                                alertify.error(res.message);
+                            }
+                        } catch (err) {
+                            alertify.error("An error occurred. Please try again later.");
+                        }
+                    },
+                    error: function () {
+                        alertify.error("An error occurred. Please try again later.");
+                    }
+                });
+            });
+
+            $("#facultyform").on("submit", function (e) {
+    e.preventDefault();
+    var form = this;
+    var formdata = new FormData(form);
+    formdata.append("action", "faculty");
+
+    $.ajax({
+        url: "api.php", // your faculty backend handler
+        type: "POST",
+        data: formdata,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+            try {
+                let res = (typeof response === 'object') ? response : JSON.parse(response);
+
+                if (res.status === 200) {
+    alertify.success(res.message);
+
+    setTimeout(function () {
+        // check role and redirect accordingly
+        switch (res.role) {
+            case 'student':
+                window.location.href = "../student/";
+                break;
+
+            case 'faculty':
+                window.location.href = "../faculty/";
+                break;
+
+            case 'admin':
+                window.location.href = "../admin/";
+                break;
+            case 'male_admin':
+                window.location.href = "../admin/";
+                break;
+            case 'female_admin':
+                window.location.href = "../admin/";
+                break;
+
+            case 'mess_supervisor':
+                window.location.href = "../mess/";
+                break;
+            case 'biometrics':
+                window.location.href = "../biometrics/";
+                break;
+
+            default:
+                alertify.error("No redirect defined for this role!");
+        }
+    }, 1000);
+}
+ else {
+                    alertify.error(res.message);
+                }
+
+            } catch (err) {
+                alertify.error("Unexpected server response!");
+            }
+        },
+        error: function () {
+            alertify.error("Unable to process request.");
+        }
+    });
+});
+            // Teddy eyes
+            $('input[type="password"]').on('focus input', function () {
+                $('#teddy').addClass('eyes-closed');
+            });
+
+            $('input[type="password"]').on('blur', function () {
+                $('#teddy').removeClass('eyes-closed');
+            });
+
+            // Password recovery
+            $("#to-recover").click(function () {
+                $("#loginTabsContent").fadeOut(300, function () {
+                    $("#recoverForm").fadeIn(300).addClass("active");
+                });
+            });
+
+            $("#to-login").click(function () {
+                $("#recoverForm").fadeOut(300, function () {
+                    $("#recoverForm").removeClass("active");
+                    $("#loginTabsContent").fadeIn(300);
+                });
+            });
+
+            $("#sendEmailButton").click(function () {
+                var email = $("#email").val();
+                var id = $("#fid").val();
+
+                if (!email || !id) {
+                    alertify.error('Please enter both Faculty ID and Email address');
+                    return;
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "mail.php",
+                    data: { email: email, fid: id },
+                    dataType: "json",
+                    success: function (response) {
+                        if (response.status === 200) {
+                            alertify.success(response.message);
+                            setTimeout(function () { location.reload(); }, 2000);
+                        } else {
+                            alertify.error(response.message);
+                        }
+                    },
+                    error: function () {
+                        alertify.error("An error occurred. Please try again later.");
+                    }
+                });
+            });
+
+            // Department dropdown
+            $("input[name='email']").on("input", function () {
+                var facultyID = $(this).val();
+                if (facultyID.length >= 2) {
+                    $.ajax({
+                        url: "get_dept_options.php",
+                        type: "POST",
+                        data: { faculty_id: facultyID },
+                        success: function (response) {
+                            try {
+                                let res = JSON.parse(response);
+                                let deptDropdown = $("#deptDropdown");
+                                deptDropdown.empty();
+
+                                if (res.status === 200) {
+                                    deptDropdown.append(`<option value="">Select Department</option>`);
+                                    res.data.forEach(function (dept) {
+                                        deptDropdown.append(`<option value="${dept}">${dept}</option>`);
+                                    });
+                                    deptDropdown.attr('required', true);
+                                    deptDropdown.closest(".input-group").show();
+                                } else {
+                                    deptDropdown.closest(".input-group").hide();
+                                    deptDropdown.removeAttr('required');
+                                }
+                            } catch (err) {
+                                $("#deptDropdown").closest(".input-group").hide();
+                                $("#deptDropdown").removeAttr('required');
+                            }
+                        }
+                    });
+                } else {
+                    $("#deptDropdown").closest(".input-group").hide();
+                    $("#deptDropdown").removeAttr('required');
+                }
+            });
+
+            $("form").on("submit", function (e) {
+                var deptDropdown = $("#deptDropdown");
+                if (deptDropdown.is(':visible') && deptDropdown.attr('required')) {
+                    var selectedValue = deptDropdown.val();
+                    if (selectedValue === "" || selectedValue === null) {
+                        e.preventDefault();
+                        alertify.error('Please select a department');
+                        return false;
+                    }
+                }
+            });
+
+            
+                    });
+    </script>
+    <script defer=""
+        src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+        data-cf-beacon="{"
+        version":"2024.11.0","token":"5615331463204a23a87854fb42c4a90f","r":1,"server_timing":{"name":{"cfcachestatus":true,"cfedge":true,"cfextpri":true,"cfl4":true,"cforigin":true,"cfspeedbrain":true},"location_startswith":null}}"=""
+        crossorigin="anonymous"></script>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'9a047a8abfd9fff7',t:'MTc2MzQzNzU2NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+
+</body>
+
+</html>

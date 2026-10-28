@@ -1,0 +1,48 @@
+{
+    "packages": [
+        {
+            "name": "rajakannan/biosync",
+            "version": "v1.2.2",
+            "version_normalized": "1.2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rajakannan/biometric-sync.git",
+                "reference": "eca36768881f05b60dbb817f4205774ae3c7c11d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rajakannan/biometric-sync/zipball/eca36768881f05b60dbb817f4205774ae3c7c11d",
+                "reference": "eca36768881f05b60dbb817f4205774ae3c7c11d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-soap": "*",
+                "ext-sockets": "*",
+                "php": ">=5.3.0"
+            },
+            "time": "2019-01-17T01:51:00+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Biosync\\": "src/Biosync"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Raja",
+                    "email": "rajacse10@gmail.com"
+                }
+            ],
+            "description": "Package for communicating with essl x990 biometric device via udp protocol",
+            "support": {
+                "issues": "https://github.com/rajakannan/biometric-sync/issues",
+                "source": "https://github.com/rajakannan/biometric-sync/tree/master"
+            },
+            "install-path": "../rajakannan/biosync"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

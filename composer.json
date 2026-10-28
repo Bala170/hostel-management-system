@@ -1,0 +1,5 @@
+{
+    "require": {
+        "rajakannan/biosync": "^1.2"
+    }
+}

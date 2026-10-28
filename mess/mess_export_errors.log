@@ -1,0 +1,48 @@
+[16-Feb-2026 05:32:01 Europe/Berlin] Starting messexport.php with parameters: Array
+(
+    [type] => token_requests
+    [filter_month] => 2026-02
+)
+
+[16-Feb-2026 05:32:02 Europe/Berlin] TCPDF library loaded successfully
+[16-Feb-2026 05:32:02 Europe/Berlin] Database connection successful
+[16-Feb-2026 05:32:44 Europe/Berlin] Starting messexport.php with parameters: Array
+(
+    [type] => revenue
+    [filter_month] => 2026-02
+)
+
+[16-Feb-2026 05:32:46 Europe/Berlin] TCPDF library loaded successfully
+[16-Feb-2026 05:32:46 Europe/Berlin] Database connection successful
+[16-Feb-2026 05:33:01 Europe/Berlin] Starting messexport.php with parameters: Array
+(
+    [type] => consumption
+    [filter_month] => 2026-02
+)
+
+[16-Feb-2026 05:33:12 Europe/Berlin] TCPDF library loaded successfully
+[16-Feb-2026 05:33:12 Europe/Berlin] Database connection successful
+[16-Feb-2026 05:34:55 Europe/Berlin] Starting messexport.php with parameters: Array
+(
+    [type] => token_requests
+    [filter_month] => 2026-02
+)
+
+[16-Feb-2026 05:34:55 Europe/Berlin] TCPDF library loaded successfully
+[16-Feb-2026 05:34:55 Europe/Berlin] Database connection successful
+[16-Feb-2026 05:35:05 Europe/Berlin] Starting messexport.php with parameters: Array
+(
+    [type] => revenue
+    [filter_month] => 2026-02
+)
+
+[16-Feb-2026 05:35:05 Europe/Berlin] TCPDF library loaded successfully
+[16-Feb-2026 05:35:05 Europe/Berlin] Database connection successful
+[16-Feb-2026 05:35:16 Europe/Berlin] Starting messexport.php with parameters: Array
+(
+    [type] => consumption
+    [filter_month] => 2026-02
+)
+
+[16-Feb-2026 05:35:16 Europe/Berlin] TCPDF library loaded successfully
+[16-Feb-2026 05:35:16 Europe/Berlin] Database connection successful
